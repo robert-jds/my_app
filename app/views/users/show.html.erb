@@ -1,0 +1,7 @@
+<section id="main">
+<%= @user.name %>, <%= @user.email %>
+</section>
+<aside>
+  <strong>Name: </strong><%= @user.name %><br />
+  <strong>URL: </strong><%= link_to user_path(@user), @user %>
+</aside>

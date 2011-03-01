@@ -1,0 +1,8 @@
+<h1>All Jaguars</h1>
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+    </li>
+  <% end %>
+</ul>

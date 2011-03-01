@@ -1,0 +1,23 @@
+# == Schema Information
+# Schema version: 20110221221644
+#
+# Table name: tasks
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  due_date    :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#  description :string(255)
+#  task_code   :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  due_date: 2011-02-21 10:27:56
+
+two:
+  name: MyString
+  due_date: 2011-02-21 10:27:56

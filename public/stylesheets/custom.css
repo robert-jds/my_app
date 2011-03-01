@@ -1,0 +1,186 @@
+body {
+}
+
+.container {
+  background-color: #fff;
+  width: 860px;
+  -moz-box-shadow: 0px 1px 5px 3px #bbb;
+  -webkit-box-shadow: 0px 1px 5px 3px #bbb;
+  box-shadow: 0px 1px 5px 3px #bbb;
+}
+
+header {
+  background-color: #000;
+  padding: 0;
+}
+
+header h1 {
+  width: 860px;
+  text-align: right;
+  font-style: italic;
+  font-size: 4.5em;
+  color: #fff;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 0;
+}
+
+header h1 a, header h1 a:hover, header h1 a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:visited {
+}
+
+nav {
+  /* #A5BB2A */
+  background-color: #000;
+  padding: 0 0.7em;
+  border-bottom: 1px solid #333;
+  border-top: 1px solid #333;
+  position: relative;
+}
+
+nav ul {
+  width: 860px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  font-size: 2em;
+  padding: 0 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li a:visited {
+  text-decoration: underline;
+}
+
+nav ul li a:visited {
+}
+
+ul#secondary {
+  float: right;
+  list-style-type: none;
+}
+
+footer nav {
+  background-color: #fff;
+  border-bottom: none;
+  border-top: none;
+  padding: 10px 0px;
+}
+
+footer nav ul li a {
+  font-size: 1.2em;
+  color: #000;
+}
+
+section {
+  padding: 15px;
+}
+
+.button {
+  -moz-border-radius: .25em;
+  -webkit-border-radius: .25em;
+  border-radius: .25em;
+}
+
+.signup_button {
+  margin: 0 auto;
+  display: block;
+  width: 120px;
+  text-align: center;
+  background-color: #A5BB2A;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 2.5em;
+}
+
+
+section#main {
+  float: left;
+  width: 600px;
+}
+
+aside {
+  float: right;
+  width: 200px
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+
+.field_with_errors {
+  margin-top: 0px;
+  display: table;
+}
+
+.field_with_errors input {
+  border: 1px solid #F33;
+}
+
+.field_with_errors label {
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid #F33;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  background-color: #F33;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+ul.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
+}
+
+/*** T E S T ***/
+
+nav ul li#tasks a {
+  background-color: #A5BB2A;
+}
