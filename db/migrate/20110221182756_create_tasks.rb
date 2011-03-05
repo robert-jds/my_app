@@ -6,6 +6,8 @@ class CreateTasks < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :tasks, :assigner_id
+    add_index :tasks, :assignee_id
   end
 
   def self.down

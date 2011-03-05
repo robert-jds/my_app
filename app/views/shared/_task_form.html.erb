@@ -1,0 +1,23 @@
+<% form_for @task do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :assigned_to, "Assign To" %><br />
+    <%# select(:user, :assigned_to, options_for_select(@users), @default) %>
+    <%= select(:task, :assigned_to, options_for_select(@users, @default)) %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :due_date %><br />
+    <%= date_select :task, :due_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

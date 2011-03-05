@@ -1,7 +1,5 @@
-require 'digest'
-
 # == Schema Information
-# Schema version: 20110221221644
+# Schema version: 20110303181657
 #
 # Table name: users
 #
@@ -12,11 +10,17 @@ require 'digest'
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#  admin              :boolean
 #
+
+require 'digest'
 
 class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
+
+  has_many :assigned_tasks, :foreign_key => "assigned_to", :class_name => "Task"
+  has_many :assigned_by_me_tasks, :foreign_key => "assigned_by", :class_name => "Task"
 
   validates :email, :presence => true,
                     :length => { :maximum => 50 },

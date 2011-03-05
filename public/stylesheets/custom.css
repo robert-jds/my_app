@@ -9,25 +9,41 @@ body {
   box-shadow: 0px 1px 5px 3px #bbb;
 }
 
-header {
+#header-wrapper {
   background-color: #000;
+  border-bottom: 1px solid #333;
   padding: 0;
 }
 
-header h1 {
+header {
+  background-color: #000;
+  padding: 15px 0px 0px 0px;
   width: 860px;
-  text-align: right;
+  margin: 0 auto;
+}
+
+header h1 {
+  /*width: 860px;*/
   font-style: italic;
   font-size: 4.5em;
   color: #fff;
   font-weight: bold;
-  margin: 0 auto;
+  margin-bottom: 0;
   padding: 0;
+  float: left;
+}
+
+header nav.secondary {
+  float: right;
 }
 
 header h1 a, header h1 a:hover, header h1 a:visited {
   text-decoration: none;
   color: #fff;
+}
+
+p {
+  margin: 0 0 1em 0;
 }
 
 a {
@@ -44,15 +60,16 @@ a:visited {
 nav {
   /* #A5BB2A */
   background-color: #000;
-  padding: 0 0.7em;
-  border-bottom: 1px solid #333;
-  border-top: 1px solid #333;
+  padding: 0 2px;
   position: relative;
+  line-height: 1;
+  border-bottom: 1px solid #333;
 }
 
 nav ul {
   width: 860px;
-  padding: 0;
+  padding: 0 2px;
+  padding: 8px 2px;
   margin: 0 auto;
 }
 
@@ -60,16 +77,18 @@ nav ul li {
   list-style-type: none;
   display: inline;
   padding: 0.2em 0;
+  margin: 0;
 }
 
 nav ul li a {
   font-size: 2em;
   padding: 0 20px;
+  padding: 8px 25px;
   color: #fff;
   text-decoration: none;
 }
 
-nav ul li a:visited {
+nav ul li a:hover {
   text-decoration: underline;
 }
 
@@ -179,8 +198,92 @@ ul.users {
   list-style: none;
 }
 
+
+/*** T A S K  T A B L E ***/
+
+table.tasks {
+  border-collapse: collapse;
+}
+
+table.tasks th, table.tasks td {
+}
+
+table.tasks thead th {
+  background-color: #A5BB2A;
+  padding: 0px 8px;
+  margin: 0px;
+}
+
+table.tasks thead th h2 {
+  padding: 0px;
+  margin: 0px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+table.tasks tbody tr td {
+  background-color: #F1EBC9;
+  padding: 8px 24px 0px 8px;
+}
+
+table.tasks tbody tr:nth-child(even) td {
+  background-color: #FAF7E2;
+  padding: 8px 24px 0px 8px;
+}
+
+td.task h3 {
+  float: left;
+} 
+
+p.task-meta {
+  float: right;
+}
+
+/*** T A S K  F O R M ***/
+
+form#new_task div.field textarea {
+  height: 6em;
+}
+
 /*** T E S T ***/
 
-nav ul li#tasks a {
+nav ul li a {
   background-color: #A5BB2A;
+}
+
+nav.secondary {
+  background-color: #000;
+  margin-top: 14px;
+  border: none;
+}
+
+nav.secondary ul {
+  width: auto;
+} 
+
+nav.secondary ul li a {
+  background-color: #000;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 0px 8px;
+}
+
+nav.tertiary {
+  margin: 0 auto;
+  padding: 0 2px;
+  background-color: #000;
+  border-bottom: none;
+  color: #fff;
+}
+
+nav.tertiary ul {
+  width: 860px;
+  background-color: #A5BB2A;
+  padding: 5px 0px;
+}
+
+nav.tertiary ul li a {
+  padding: 0 20px;
+  font-size: 1.3em;
 }

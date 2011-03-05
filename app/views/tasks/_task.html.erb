@@ -1,0 +1,18 @@
+<tr>
+  <td class="task">
+    <div class="clearfix">
+      <h3 class="content"><%= task.name%></h3>
+      <p class="task-meta">
+        <%= link_to "Edit", edit_task_path(task) %> |  
+        <%= link_to "Delete", task, :method => :delete, :confirm => "You sure?",
+	                            :title => "Delete #{task.name}" %>
+      </p>
+    </div>
+    <p class="content"><%= task.description %></p>
+    <p class="timestamp">
+      <strong>Assigned by:</strong> <%= User.find(task.assigned_by).name %><br />
+      <strong>On:</strong> <%= time_ago_in_words(task.created_at) %> ago.<br />
+      <strong>Due:</strong> <%= task.due_date.nil? ? task.due_date : task.due_date.strftime("%B %e, %Y") %>
+    </p>
+  </td>
+</tr>

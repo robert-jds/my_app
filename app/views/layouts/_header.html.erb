@@ -1,20 +1,32 @@
-<header>
+<div id="header-wrapper">
+<header class="clearfix">
   <h1><%= link_to "Task List", root_path %></h1>
+  <nav class="secondary">
+    <ul>
+    <% if signed_in? %>
+      <li><%= link_to "Profile", edit_user_path(current_user) %></li>
+      <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign in", signin_path, :method => :create %></li>
+    <% end %>
+    </ul>
+  </nav>
 </header>
+</div>
+
 <nav>
   <ul>
-    <li id="tasks"><%= link_to "TASKS", '#' %></li>
+    <li><%= link_to "TASKS", current_user %></li>
     <li><%= link_to "JAGUARS", users_path %></li>
   </ul>
 </nav>
-<ul id="secondary">
+
 <% if signed_in? %>
-  <li><%= link_to "Profile", current_user %></li>
-  <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-  <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-  <li><%= link_to "Users", users_path %></li>
-<% else %>
-  <li><%= link_to "Sign in", signin_path, :method => :create %></li>
+  <nav class="tertiary">
+    <ul>
+      <li><%= link_to "All Tasks", "#" %></li> |
+      <li><%= link_to "High Priority", "#" %></li> |
+      <li><%= link_to "Completed", "#" %></li>
+    </ul>
+  </nav>
 <% end %>
-</ul>
- 

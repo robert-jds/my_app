@@ -1,17 +1,29 @@
-<h1>JagTasks</h1>
-<h2>Sign in</h2>
-<%= form_for(:session, :url => sessions_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password%><br />
-    <%= f.password_field :password%>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign in" %>
-  </div>
+<% if signed_in? %>
+  <section id="main">
+    <h1 class="task">Assign a Task</h1>
+    <%= render 'shared/task_form' %>
+  </section>
+  <aside>
+    <strong>Name: </strong><%= current_user.name %><br />
+    <strong>URL: </strong><%= link_to user_path(current_user),
+                                                current_user %><br />
+    <strong>Tasks: </strong><%= current_user.assigned_tasks.count %>
+  </aside>
+<% else %>
+  <h1>JagTasks</h1>
+  <h2>Sign in</h2>
+  <%= form_for(:session, :url => sessions_path) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password%><br />
+      <%= f.password_field :password%>
+    </div>
+    <div class="actions">
+      <%= f.submit "Sign in" %>
+    </div>
+  <% end %>
+  <%= link_to "Sign up!", new_user_path, :class => "button signup_button" %>
 <% end %>
-
-<%= link_to "Sign up!", new_user_path, :class => "button signup_button" %>

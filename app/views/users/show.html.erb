@@ -1,7 +1,30 @@
 <section id="main">
-<%= @user.name %>, <%= @user.email %>
+<h1>Tasks</h1>
+<% unless @user.assigned_tasks.empty? %>
+  <table class="tasks" summary="User tasks">
+    <thead>
+      <th><h2><%= @user.name %></h2></th>
+    </thead>
+    <tbody>
+      <%= render @tasks %>
+    </tbody>
+  </table>
+<% else %>
+  <table class="tasks" summary="User tasks">
+    <thead>
+      <th><h2><%= @user.name %></h2></th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>You have no assigned tasks at this time.
+	</td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
 </section>
 <aside>
   <strong>Name: </strong><%= @user.name %><br />
-  <strong>URL: </strong><%= link_to user_path(@user), @user %>
+  <strong>URL: </strong><%= link_to user_path(@user), @user %><br />
+  <strong>Tasks: </strong><%= @user.assigned_tasks.count %>
 </aside>
