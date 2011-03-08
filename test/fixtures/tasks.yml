@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110304002134
+# Schema version: 20110307232957
 #
 # Table name: tasks
 #
@@ -10,9 +10,9 @@
 #  updated_at  :datetime
 #  description :string(255)
 #  task_code   :string(255)
-#  user_id     :integer
 #  assigned_to :integer
 #  assigned_by :integer
+#  priority    :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

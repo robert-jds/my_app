@@ -24,8 +24,8 @@
 <% if signed_in? %>
   <nav class="tertiary">
     <ul>
-      <li><%= link_to "All Tasks", "#" %></li> |
-      <li><%= link_to "High Priority", "#" %></li> |
+      <li><%= link_to "All Tasks", current_user %></li> |
+      <li><%= link_to "High Priority", high_priority_user_path %></li> |
       <li><%= link_to "Completed", "#" %></li>
     </ul>
   </nav>

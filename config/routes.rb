@@ -1,7 +1,12 @@
 MyApp::Application.routes.draw do
   resources :users
+  resources :users do
+    member do
+      get 'high_priority'
+    end
+  end
   resources :sessions, :only => [:new, :create, :destory]
-  resources :tasks, :only => [:create, :edit, :destroy, :update]
+  resources :tasks, :only => [:create, :edit, :destroy, :show, :update]
 
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'

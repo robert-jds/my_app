@@ -2,6 +2,12 @@ class TasksController < ApplicationController
   before_filter :authenticate
   before_filter :correct_user, :only => [:edit, :update]
 
+  def show
+    @user = current_user
+    @tasks = @user.assigned_tasks
+    @task = Task.find(params[:id])
+  end
+
   def create
     # TODO
     #params[:task][:due_date] = DateTime.parse(params[:task][:due_date])
@@ -15,6 +21,7 @@ class TasksController < ApplicationController
       flash[:success] = "Task created!"
       redirect_to root_path
     else
+      @priorities = [['high', 3],['medium', 2],['low', 1]]
       render 'pages/home'
     end
   end
@@ -39,6 +46,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
+    if @task.destroy
+      flash[:success] = "Task deleted!"
+    else
+      flash[:error] = "Problem deleting task!"
+    end
+
+    redirect_to current_user 
   end
 
   private

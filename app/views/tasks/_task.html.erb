@@ -1,18 +1,31 @@
 <tr>
   <td class="task">
     <div class="clearfix">
-      <h3 class="content"><%= task.name%></h3>
-      <p class="task-meta">
+      <h3 class="content">
+      <%= link_to task.name, task_path(task) %>
+      </h3>
+      <p class="task-ops">
         <%= link_to "Edit", edit_task_path(task) %> |  
         <%= link_to "Delete", task, :method => :delete, :confirm => "You sure?",
 	                            :title => "Delete #{task.name}" %>
       </p>
     </div>
-    <p class="content"><%= task.description %></p>
-    <p class="timestamp">
-      <strong>Assigned by:</strong> <%= User.find(task.assigned_by).name %><br />
-      <strong>On:</strong> <%= time_ago_in_words(task.created_at) %> ago.<br />
-      <strong>Due:</strong> <%= task.due_date.nil? ? task.due_date : task.due_date.strftime("%B %e, %Y") %>
-    </p>
+    <% if !@task.nil? && task.id == @task.id %>
+      <div class="task-meta">
+        <p class="task-description"><%= task.description %></p>
+        <p class="task-assigned-by">
+          <strong>Assigned by:</strong> <%= User.find(task.assigned_by).name %>
+        </p>
+        <p class="task-priority">
+          <strong>Priority:</strong> <%= task.priority %>
+        </p>
+        <p class="task-on">
+          <strong>On:</strong> <%= task.created_at.nil? ? task.created_at: task.created_at.strftime("%B %e, %Y") %>
+        </p>
+        <p class="task-due">
+          <strong>Due:</strong> <%= task.due_date.nil? ? task.due_date : task.due_date.strftime("%B %e, %Y") %>
+        </p>
+      </div>
+    <% end %>
   </td>
 </tr>

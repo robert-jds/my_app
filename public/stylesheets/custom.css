@@ -25,7 +25,7 @@ header {
 header h1 {
   /*width: 860px;*/
   font-style: italic;
-  font-size: 4.5em;
+  font-size: 6em;
   color: #fff;
   font-weight: bold;
   margin-bottom: 0;
@@ -83,7 +83,7 @@ nav ul li {
 nav ul li a {
   font-size: 2em;
   padding: 0 20px;
-  padding: 8px 25px;
+  padding: 7px 25px;
   color: #fff;
   text-decoration: none;
 }
@@ -135,13 +135,17 @@ section {
 
 
 section#main {
-  float: left;
-  width: 600px;
+  /*
+   * float: left;
+   * width: 600px;
+   */
 }
 
 aside {
-  float: right;
-  width: 200px
+  /*
+   * float: right;
+   *width: 200px
+   */
 }
 
 div.field, div.actions {
@@ -205,7 +209,8 @@ table.tasks {
   border-collapse: collapse;
 }
 
-table.tasks th, table.tasks td {
+table.tasks td {
+  border-bottom: 1px solid #A0AA6E;
 }
 
 table.tasks thead th {
@@ -231,12 +236,47 @@ table.tasks tbody tr:nth-child(even) td {
   padding: 8px 24px 0px 8px;
 }
 
+td.task h3 a {
+  color: #000;
+} 
+
 td.task h3 {
+  font-weight: bold;
   float: left;
 } 
 
-p.task-meta {
+p.task-ops {
   float: right;
+}
+
+td.task h3,
+p.task-ops {
+  margin-bottom: 8px;
+}
+
+
+/*** T A S K  D A T A ***/
+
+.task-meta {
+  margin: 8px 0px;
+}
+
+.task-meta .task-assigned-by,
+.task-meta .task-priority,
+.task-meta .task-on,
+.task-meta .task-due { 
+  margin: 2px 0px;
+}
+
+.task-meta .task-assigned-by strong,
+.task-meta .task-priority strong,
+.task-meta .task-on strong,
+.task-meta .task-due strong { 
+  float: left;
+  width: 7em;
+}
+
+.task-meta .task-assigned-by { 
 }
 
 /*** T A S K  F O R M ***/
@@ -253,7 +293,7 @@ nav ul li a {
 
 nav.secondary {
   background-color: #000;
-  margin-top: 14px;
+  margin-top: 20px;
   border: none;
 }
 
@@ -262,11 +302,15 @@ nav.secondary ul {
 } 
 
 nav.secondary ul li a {
-  background-color: #000;
+  background-color: #333;
   color: #fff;
   font-size: 1.2em;
   font-weight: bold;
-  padding: 0px 8px;
+  padding: 4px 8px;
+  margin: 0 5px;
+  -moz-border-radius: .3em;
+  -webkit-border-radius: .3em;
+  border-radius: .3em;
 }
 
 nav.tertiary {

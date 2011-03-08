@@ -1,0 +1,12 @@
+<tr>
+  <td class="task">
+    <div class="clearfix">
+      <h3 class="content"><%= task.name%></h3>
+      <p class="task-ops">
+        <%= link_to "Edit", edit_task_path(task) %> |  
+        <%= link_to "Delete", task, :method => :delete, :confirm => "You sure?",
+	                            :title => "Delete #{task.name}" %>
+      </p>
+    </div>
+  </td>
+</tr>

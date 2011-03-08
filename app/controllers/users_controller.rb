@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    params[:user].merge({ :name => "BOB" })
+    # params[:user].merge({ :name => "BOB" })
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated."
       redirect_to @user
@@ -50,6 +50,12 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_path
+  end
+
+  def high_priority
+    @user = current_user
+    @tasks = @user.assigned_tasks.find(:all, :conditions => "priority = 1")
+    render 'show'
   end
 
   private
