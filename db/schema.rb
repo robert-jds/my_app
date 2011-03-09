@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110307232957) do
+ActiveRecord::Schema.define(:version => 20110308234926) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
@@ -18,10 +26,11 @@ ActiveRecord::Schema.define(:version => 20110307232957) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
-    t.string   "task_code"
+    t.string   "client_code"
     t.integer  "assigned_to"
     t.integer  "assigned_by"
     t.integer  "priority"
+    t.integer  "status"
   end
 
   create_table "users", :force => true do |t|

@@ -3,13 +3,14 @@ class TasksController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
 
   def show
-    @user = current_user
+    @body_class = 'task'
+    @user = User.find(params[:user_id])
     @tasks = @user.assigned_tasks
     @task = Task.find(params[:id])
   end
 
   def create
-    # TODO
+    # TODO add time
     #params[:task][:due_date] = DateTime.parse(params[:task][:due_date])
     @task = current_user.assigned_by_me_tasks.build(params[:task])
     @users = []
@@ -22,16 +23,20 @@ class TasksController < ApplicationController
       redirect_to root_path
     else
       @priorities = [['high', 3],['medium', 2],['low', 1]]
+      @default_priority = 2
       render 'pages/home'
     end
   end
 
   def edit
+    @body_class = 'task'
     @task = Task.find(params[:id])
     @users = []
     User.all.each do |u|
       @users << [u.name, u.id]
     end
+    @priorities = [['high', 3],['medium', 2],['low', 1]]
+    @default_priority = @task.priority.nil? ? 2 : @task.priority
     @default = @task.assigned_to
   end
 

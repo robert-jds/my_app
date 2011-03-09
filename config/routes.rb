@@ -5,8 +5,18 @@ MyApp::Application.routes.draw do
       get 'high_priority'
     end
   end
+
+  resources :users do
+    resources :tasks, :only => [:show]
+  end
+
   resources :sessions, :only => [:new, :create, :destory]
   resources :tasks, :only => [:create, :edit, :destroy, :show, :update]
+  resources :comments, :only => [:index, :create, :show]
+
+  resources :tasks do
+    resources :comments, :only => [:index, :show, :create, :show]
+  end
 
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'

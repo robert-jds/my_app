@@ -5,9 +5,11 @@ class UsersController < ApplicationController
 
   def index 
     @users = User.all
+    @body_class = 'user'
   end
 
   def show
+    @body_class = 'task'
     @user = User.find(params[:id])
     #@tasks = Task.find_by_assigned_to(@user.id)
     @tasks = @user.assigned_tasks
@@ -53,8 +55,9 @@ class UsersController < ApplicationController
   end
 
   def high_priority
+    @body_class = 'task'
     @user = current_user
-    @tasks = @user.assigned_tasks.find(:all, :conditions => "priority = 1")
+    @tasks = @user.assigned_tasks.find(:all, :conditions => "priority = 3")
     render 'show'
   end
 

@@ -6,7 +6,11 @@
     <%= select(:task, :assigned_to, options_for_select(@users, @default)) %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :client_code, 'Client' %><br />
+    <%= f.text_field :client_code %>
+  </div>
+  <div class="field">
+    <%= f.label :name, 'Project (title)' %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -23,5 +27,7 @@
   </div>
   <div class="actions">
     <%= f.submit "Submit" %>
+    <%= label_tag :notify, 'Notify by email?' %>
+    <%= check_box_tag :notify %>
   </div>
 <% end %>

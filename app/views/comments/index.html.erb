@@ -1,0 +1,51 @@
+<table>
+<tr class="<%= @task.priority == 3 ? ' high-priority' : ''%>">
+  <td class="client-code" style="vertical-align: top;">
+    <h3><%= @task.client_code %></h3>
+  </td>
+  <td class="task">
+    <div class="clearfix">
+      <h3 class="content">
+      <% if @task.priority == 3 %>
+        <span class="bang">!</span>
+      <% end %>
+      <%= @task.name %>
+      </h3>
+    </div>
+    <% if !@task.nil? && @task.id == @task.id %>
+      <div class="task-meta">
+        <p class="task-description"><%= @task.description %></p>
+        <p class="task-assigned-by">
+          <strong>Assigned by:</strong> <%= User.find(@task.assigned_by).name %>
+        </p>
+        <p class="task-priority">
+          <strong>Priority:</strong> <%= @task.priority %>
+        </p>
+        <p class="task-on">
+          <strong>On:</strong> <%= @task.created_at.nil? ? @task.created_at: @task.created_at.strftime("%B %e, %Y") %>
+        </p>
+        <p class="task-due">
+          <strong>Due:</strong> <%= @task.due_date.nil? ? @task.due_date : @task.due_date.strftime("%B %e, %Y") %>
+        </p>
+      </div>
+    <% end %>
+  </td>
+</tr>
+</table>
+
+
+<h3><strong><%= @task.comments.length %> comments so far...</strong></h3>
+
+<% form_for @comment do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div><%= f.hidden_field :task_id %></div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+    <%= label_tag :notify, 'Notify by email?' %>
+    <%= check_box_tag :notify %>
+  </div>
+<% end %>

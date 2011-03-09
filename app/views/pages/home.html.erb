@@ -1,7 +1,9 @@
 <% if signed_in? %>
   <section id="main">
-    <h1 class="task">Assign a Task</h1>
-    <%= render 'shared/task_form' %>
+    <div id="new-task">
+      <h1 class="task">Assign a Task</h1>
+      <%= render 'shared/task_form' %>
+    </div>
   </section>
   <aside>
     <strong>Name: </strong><%= current_user.name %><br />

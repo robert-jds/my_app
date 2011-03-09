@@ -16,8 +16,8 @@
 
 <nav>
   <ul>
-    <li><%= link_to "TASKS", current_user %></li>
-    <li><%= link_to "JAGUARS", users_path %></li>
+    <li id="nav-tasks"><%= link_to "TASKS", current_user %></li>
+    <li id="nav-jaguars"><%= link_to "JAGUARS", users_path %></li>
   </ul>
 </nav>
 
@@ -25,7 +25,7 @@
   <nav class="tertiary">
     <ul>
       <li><%= link_to "All Tasks", current_user %></li> |
-      <li><%= link_to "High Priority", high_priority_user_path %></li> |
+      <li><%= link_to "High Priority", high_priority_user_path(current_user) %></li> |
       <li><%= link_to "Completed", "#" %></li>
     </ul>
   </nav>
