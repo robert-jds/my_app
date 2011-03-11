@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 
   has_many :assigned_tasks, :foreign_key => "assigned_to", :class_name => "Task"
   has_many :assigned_by_me_tasks, :foreign_key => "assigned_by", :class_name => "Task"
+  has_many :comments
 
   validates :email, :presence => true,
                     :length => { :maximum => 50 },

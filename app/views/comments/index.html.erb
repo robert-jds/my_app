@@ -1,4 +1,4 @@
-<table>
+<table class="tasks">
 <tr class="<%= @task.priority == 3 ? ' high-priority' : ''%>">
   <td class="client-code" style="vertical-align: top;">
     <h3><%= @task.client_code %></h3>
@@ -15,6 +15,9 @@
     <% if !@task.nil? && @task.id == @task.id %>
       <div class="task-meta">
         <p class="task-description"><%= @task.description %></p>
+        <p class="task-status">
+          <strong>Status:</strong> <%= @task.status %>
+        </p>
         <p class="task-assigned-by">
           <strong>Assigned by:</strong> <%= User.find(@task.assigned_by).name %>
         </p>
@@ -33,8 +36,26 @@
 </tr>
 </table>
 
-
 <h3><strong><%= @task.comments.length %> comments so far...</strong></h3>
+
+<ul class="comments">
+<% @comments.each do |c| %>
+  <li>
+    <p class="comment-meta">
+      <span class="created-at">
+        <%= c.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+      </span>
+      &nbsp;|&nbsp;
+      <span class="user-name">
+        <%= "#{User.find(c.user_id).name} said..." %>
+      </span>
+    </p>
+    <p class="comment">
+      <%= c.comment %>
+    </p>
+  </li>
+<% end %>
+</ul>
 
 <% form_for @comment do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
@@ -42,7 +63,7 @@
     <%= f.label :comment %><br />
     <%= f.text_area :comment %>
   </div>
-  <div><%= f.hidden_field :task_id %></div>
+  <div><%= f.hidden_field :task_id, :value => @task.id %></div>
   <div class="actions">
     <%= f.submit "Submit" %>
     <%= label_tag :notify, 'Notify by email?' %>

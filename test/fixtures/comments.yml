@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20110308234926
+#
+# Table name: comments
+#
+#  id         :integer         not null, primary key
+#  task_id    :integer
+#  user_id    :integer
+#  comment    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:

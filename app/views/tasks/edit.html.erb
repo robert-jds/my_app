@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :status %><br />
+    <%= select(:task, :status, options_for_select(@status, @default_status)) %>
+  </div>
+  <div class="field">
     <%= f.label :priority %><br />
     <%= select(:task, :priority, options_for_select(@priorities, @default_priority)) %>
   </div>

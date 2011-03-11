@@ -5,14 +5,18 @@ class UsersController < ApplicationController
 
   def index 
     @users = User.all
+    @user = current_user
     @body_class = 'user'
+    @empty_notice = "No tasks assigned at this time."
   end
 
   def show
     @body_class = 'task'
     @user = User.find(params[:id])
+    @all_users = User.all
     #@tasks = Task.find_by_assigned_to(@user.id)
     @tasks = @user.assigned_tasks
+    @empty_notice = "You have no assigned tasks at this time."
   end
 
   def new
@@ -57,8 +61,11 @@ class UsersController < ApplicationController
   def high_priority
     @body_class = 'task'
     @user = current_user
+    @all_users = User.all
     @tasks = @user.assigned_tasks.find(:all, :conditions => "priority = 3")
-    render 'show'
+    @empty_notice = "No high priority tasks here."
+    @category = "high"
+    #render 'show'
   end
 
   private

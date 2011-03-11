@@ -8,6 +8,7 @@
       </tr>
     </thead>
     <tbody>
+    <h1><%= @category %></h1>
       <%= render @tasks %>
     </tbody>
   </table>
@@ -22,5 +23,35 @@
       </tr>
     </tbody>
   </table>
+<% end %>
+
+<% unless @all_users.empty? %>
+  <% @all_users.each do |user| %>
+    <% if user.id != @user.id %>
+      <% unless user.assigned_tasks.empty? %>
+        <table class="tasks" summary="User tasks">
+          <thead>
+            <tr>
+              <th colspan="2"><h2><%= user.name %></h2></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render user.assigned_tasks %>
+          </tbody>
+        </table>
+      <% else %>
+        <table class="tasks" summary="User tasks">
+          <thead>
+            <th><h2><%= user.name %></h2></th>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @user.name %> has no assigned tasks at this time.</td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
 </section>

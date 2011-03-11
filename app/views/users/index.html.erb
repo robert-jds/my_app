@@ -1,13 +1,30 @@
+<section id="main">
+
 <h1>All Jaguars</h1>
-<ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user %>
-      <% if current_user.admin? %>
-      | <%= link_to "delete", user, :method => :delete,
-                                    :confirm => "You sure?",
-				    :title => "Delete #{user.name}" %>
-      <% end %>
-    </li>
+<% unless @users.empty? %>
+  <% @users.each do |u| %>
+    <% unless u.assigned_tasks.empty? %>
+      <table class="tasks" summary="User tasks">
+        <thead>
+          <th colspan="2"><h2><%= u.name %></h2></th>
+        </thead>
+        <tbody>
+          <%= render u.assigned_tasks %>
+        </tbody>
+      </table>
+    <% else %>
+      <table class="tasks" summary="User tasks">
+        <thead>
+          <th colspan="2"><h2><%= u.name %></h2></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @empty_notice %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
   <% end %>
-</ul>
+<% end %>
+
+</section>

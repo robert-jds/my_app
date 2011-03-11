@@ -23,7 +23,7 @@ class Task < ActiveRecord::Base
   belongs_to :assigner_id, :class_name => "User", :foreign_key => "user_id"
   belongs_to :assignee_id, :class_name => "User", :foreign_key => "user_id"
 
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
   validates :name, :presence => true
   validates :description, :presence => true

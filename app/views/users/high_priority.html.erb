@@ -7,7 +7,9 @@
       <th colspan="2"><h2><%= @user.name %></h2></th>
     </thead>
     <tbody>
-      <%= render @tasks %>
+      <% @user.assigned_tasks.find(:all, :conditions => "priority = 3").each do |task| %>
+        <%= render :partial => 'tasks/high_priority_task', :locals => { :task => task } %>
+      <% end %>
     </tbody>
   </table>
 <% else %>
@@ -27,19 +29,22 @@
 <% unless @all_users.empty? %>
   <% @all_users.each do |o| %>
     <% if o.id != @user.id %>
-      <% unless o.assigned_tasks.empty? %>
+      <% unless o.assigned_tasks.find(:all, :conditions => "priority = 3").empty? %>
         <table class="tasks" summary="User tasks">
           <thead>
             <th colspan="2"><h2><%= o.name %></h2></th>
           </thead>
           <tbody>
-            <%= render o.assigned_tasks %>
+            <% o.assigned_tasks.find(:all, :conditions => "priority = 3").each do |task| %>
+              <%= render :partial => 'tasks/high_priority_task', :locals => { :task => task } %>
+            <% end %>
+            <%# render o.assigned_tasks.find(:all, :conditions => "priority = 3") %>
           </tbody>
         </table>
       <% else %>
         <table class="tasks" summary="User tasks">
           <thead>
-            <th colspan="2"><h2><%= o.name %></h2></th>
+            <th><h2><%= o.name %></h2></th>
           </thead>
           <tbody>
             <tr>

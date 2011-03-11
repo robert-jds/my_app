@@ -8,13 +8,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = current_user.comments.create(params[:comment])
     if @comment.save
       flash[:success] = "Comment added!"
-      redirect task_comments_path('index'
+      redirect_to task_comments_path(params[:comment][:task_id])
     else
       flash[:error] = "Error adding comment!"
-      redirect @user
+      redirect_to @user
     end
   end
+
 end

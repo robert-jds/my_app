@@ -5,8 +5,14 @@ class TasksController < ApplicationController
   def show
     @body_class = 'task'
     @user = User.find(params[:user_id])
+    @all_users = User.all
     @tasks = @user.assigned_tasks
-    @task = Task.find(params[:id])
+    @selected_task = Task.find(params[:id])
+    if params[:category] == "high"
+      @category = "high"
+      @tasks = @user.assigned_tasks.find(:all, :conditions => "priority = 3")
+      render 'users/high_priority'
+    end
   end
 
   def create
@@ -37,6 +43,8 @@ class TasksController < ApplicationController
     end
     @priorities = [['high', 3],['medium', 2],['low', 1]]
     @default_priority = @task.priority.nil? ? 2 : @task.priority
+    @status = [['Complete', 2],['In-progress', 1]]
+    @default_status = @task.status.nil? ? 1 : @task.status
     @default = @task.assigned_to
   end
 
