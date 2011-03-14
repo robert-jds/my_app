@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110308234926) do
     t.integer  "assigned_to"
     t.integer  "assigned_by"
     t.integer  "priority"
-    t.integer  "status"
+    t.integer  "status",      :default => 1
   end
 
   create_table "users", :force => true do |t|

@@ -432,5 +432,6 @@ ul.comments li p.comment-meta span.user-name {
 
 ul.comments li p.comment {
   margin-left: 10px;
+  padding-right: 60px;
 }
 

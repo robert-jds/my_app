@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @all_users = User.all
     #@tasks = Task.find_by_assigned_to(@user.id)
+    #@tasks = Task.find_all_by_assigned_to(@user.id, :conditions => "status != 2")
     @tasks = @user.assigned_tasks
     @empty_notice = "You have no assigned tasks at this time."
   end
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # params[:user].merge({ :name => "BOB" })
+
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated."
       redirect_to @user
@@ -56,6 +57,16 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_path
+  end
+
+  def completed 
+    @body_class = 'task'
+    @user = current_user
+    @all_users = User.all
+    @tasks = @user.assigned_tasks.find(:all, :conditions => "status = 2")
+    @empty_notice = "No completed tasks here."
+    @category = "completed"
+    #render 'show'
   end
 
   def high_priority

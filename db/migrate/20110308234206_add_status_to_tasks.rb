@@ -1,6 +1,6 @@
 class AddStatusToTasks < ActiveRecord::Migration
   def self.up
-    add_column :tasks, :status, :integer
+    add_column :tasks, :status, :integer, :default => 1
   end
 
   def self.down

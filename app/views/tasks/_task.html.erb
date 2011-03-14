@@ -25,13 +25,13 @@
       <div class="task-meta">
         <p class="task-description"><%= task.description %></p>
         <p class="task-status">
-          <strong>Status:</strong> <%= task.status %>
+          <strong>Status:</strong> <%= task_status_to_s task.status %>
         </p>
         <p class="task-assigned-by">
           <strong>Assigned by:</strong> <%= User.find(task.assigned_by).name %>
         </p>
         <p class="task-priority">
-          <strong>Priority:</strong> <%= task.priority %>
+          <strong>Priority:</strong> <%= task_priority_to_s task.priority %>
         </p>
         <p class="task-on">
           <strong>On:</strong> <%= task.created_at.nil? ? task.created_at: task.created_at.strftime("%B %e, %Y") %>

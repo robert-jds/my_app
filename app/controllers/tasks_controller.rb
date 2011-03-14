@@ -8,10 +8,17 @@ class TasksController < ApplicationController
     @all_users = User.all
     @tasks = @user.assigned_tasks
     @selected_task = Task.find(params[:id])
+    @empty_notice = "You have no assigned tasks at this time."
     if params[:category] == "high"
       @category = "high"
       @tasks = @user.assigned_tasks.find(:all, :conditions => "priority = 3")
+      @empty_notice = "No high priority tasks here."
       render 'users/high_priority'
+    elsif params[:category] == "completed"
+      @category = "completed"
+      @tasks = @user.assigned_tasks.find(:all, :conditions => "status = 2")
+      @empty_notice = "No completed tasks here."
+      render 'users/completed'
     end
   end
 

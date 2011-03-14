@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110308234206
+# Schema version: 20110308234926
 #
 # Table name: tasks
 #
@@ -13,7 +13,7 @@
 #  assigned_to :integer
 #  assigned_by :integer
 #  priority    :integer
-#  status      :integer
+#  status      :integer         default(1)
 #
 
 class Task < ActiveRecord::Base
@@ -33,4 +33,5 @@ class Task < ActiveRecord::Base
   # validates :due_date, :presence => true
 
   default_scope :order => 'tasks.created_at DESC'
+
 end

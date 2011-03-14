@@ -60,7 +60,7 @@
 <% form_for @comment do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.label :comment %><br />
+    <%= f.label :comment, "#{current_user.name} says..." %><br />
     <%= f.text_area :comment %>
   </div>
   <div><%= f.hidden_field :task_id, :value => @task.id %></div>

@@ -2,6 +2,7 @@ MyApp::Application.routes.draw do
   resources :users
   resources :users do
     member do
+      get 'completed'
       get 'high_priority'
     end
   end

@@ -9,7 +9,7 @@
         <span class="bang">!</span>
       <% end %>
       <% if !@selected_task.nil? && task.id == @selected_task.id %>
-        <%= link_to task.name, high_priority_user_path(current_user) %>
+        <%= link_to task.name, completed_user_path(current_user) %>
       <% else %>
         <%= link_to task.name, user_task_path(@user, task.id, :category => @category) %>
       <% end %>
