@@ -8,7 +8,7 @@
     </thead>
     <tbody>
       <% @user.assigned_tasks.find(:all, :conditions => "status = 2").each do |task| %>
-        <%= render :partial => 'tasks/status_task', :locals => { :task => task } %>
+        <%= render :partial => 'tasks/completed_task', :locals => { :task => task } %>
       <% end %>
     </tbody>
   </table>
